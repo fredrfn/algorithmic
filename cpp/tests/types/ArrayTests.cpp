@@ -99,7 +99,7 @@ TEST_CASE("Array elements getter and setters") {
     REQUIRE_THROWS_AS(carr[3], IllegalIndexException);
 }
 
-TEST_CASE("Comparison operators") {
+TEST_CASE("Array Comparison operators") {
     Array<int, 2> arr1(1);
     Array<int, 2> arr1cp = arr1;
     Array<int, 2> arr2(2);

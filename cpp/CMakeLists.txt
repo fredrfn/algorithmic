@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(${TARGET_NAME}
     src/main.cpp
     tests/types/ArrayTests.cpp
+    tests/types/LinkedListTests.cpp
 )
 
 if(MSVC)
