@@ -11,6 +11,7 @@ add_executable(${TARGET_NAME}
     src/main.cpp
     tests/types/ArrayTests.cpp
     tests/types/LinkedListTests.cpp
+    tests/types/VectorTests.cpp
 )
 
 if(MSVC)

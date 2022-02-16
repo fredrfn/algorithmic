@@ -9,68 +9,41 @@ template <typename T, size_t S>
 class Array {
     T items[S];
 public:
-    Array(T value = {}) noexcept {
-        fill(value);
+    Array(const T& value = {}) noexcept { 
+        fill(value); 
     }
 
     Array(Array<T, S>& other) noexcept { 
-        for(size_t i = 0; i < size(); i++) {
-            items[i] = other[i];
-        }
+        for(size_t i = 0; i < size(); i++) items[i] = other[i];
     }
 
     Array(const Array<T, S>& other) noexcept { 
-        for(size_t i = 0; i < size(); i++) {
-            items[i] = other[i];
-        }
+        for(size_t i = 0; i < size(); i++) items[i] = other[i];
     }
 
     Array<T, S>& operator=(Array<T, S>& other) {
-        for(size_t i = 0; i < size(); i++) {
-            items[i] = other[i];
-        }
+        for(size_t i = 0; i < size(); i++) items[i] = other[i];
         return *this;
     }
 
     Array<T, S>& operator=(const Array<T, S>& other) {
-        for(size_t i = 0; i < size(); i++) {
-            items[i] = other[i];
-        }
+        for(size_t i = 0; i < size(); i++) items[i] = other[i];
         return *this;
     }
 
     const T& operator[](size_t i) const { 
-        if (i >= size()) {
-            throw IllegalIndexException(i);
-        }
+        if (i >= size()) throw IllegalIndexException(i);
         return items[i]; 
     }
 
     T& operator[](size_t i) { 
-        if (i >= size()) {
-            throw IllegalIndexException(i);
-        }
+        if (i >= size()) throw IllegalIndexException(i);
         return items[i];
-    }
-
-    bool operator==(Array& other) const noexcept {
-        for(size_t i = 0; i < size(); i++) {
-            if(items[i] != other.items[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    bool operator!=(Array& other) const noexcept {
-        return !((*this) == other);
     }
 
     bool operator==(const Array& other) const noexcept {
         for(size_t i = 0; i < size(); i++) {
-            if(items[i] != other.items[i]) {
-                return false;
-            }
+            if(items[i] != other.items[i]) return false;
         }
         return true;
     }
@@ -83,15 +56,13 @@ public:
         return S; 
     }
 
-    void fill(T value) noexcept { 
-        for(size_t i = 0; i < size(); i++)
-            items[i] = value;
+    void fill(const T& value) noexcept { 
+        for(size_t i = 0; i < size(); i++) items[i] = value;
     }
 
     void swap(size_t a, size_t b) {
-        if (a >= size() || b >= size()) {
-            throw IllegalIndexException(a > b ? a : b);
-        }
+        if (a >= size() || b >= size()) throw IllegalIndexException(a > b ? a : b);
+
         T tmp = std::move(items[a]);
         items[a] = std::move(items[b]);
         items[b] = std::move(tmp);

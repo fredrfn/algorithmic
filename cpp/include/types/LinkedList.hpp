@@ -42,9 +42,7 @@ public:
         T& operator*() const { return current->value; }
         Iterator operator++() {
             Iterator tmp = Iterator(current);
-            if(current != nullptr) {
-                current = current->next;
-            }
+            if(current != nullptr) current = current->next;
             return tmp;
         }
     };
@@ -104,37 +102,20 @@ public:
         return node->value;
     }
 
-    bool operator==(LinkedList<T>& other) const noexcept {
-        size_t length = size();
-        if (length != other.size()) return false;
-        for(size_t i = 0; i < length; i++) {
-            if ((*this)[i] != other[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     bool operator==(const LinkedList<T>& other) const noexcept {
         size_t length = size();
         if (length != other.size()) return false;
         for(size_t i = 0; i < length; i++) {
-            if ((*this)[i] != other[i]) {
-                return false;
-            }
+            if ((*this)[i] != other[i]) return false;
         }
         return true;
-    }
-
-    bool operator!=(LinkedList<T>& other) const noexcept {
-        return !((*this) == other);
     }
 
     bool operator!=(const LinkedList<T>& other) const noexcept {
         return !((*this) == other);
     }
 
-    bool empty() const noexcept { 
+    bool empty() const noexcept {
         return size() == 0; 
     }
 

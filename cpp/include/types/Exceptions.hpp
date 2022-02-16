@@ -15,4 +15,9 @@ public:
     IllegalIndexException(size_t index) : Exception("IllegalIndex " + std::to_string(index)) {}
 };
 
+class IllegalAccessException : public Exception {
+public:
+    IllegalAccessException() : Exception("IllegalAccessException") {}
+};
+
 #endif
